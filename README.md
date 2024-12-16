@@ -1,7 +1,7 @@
 <h1 align="center">MedBro - брат в мире медицины, который всегда на связи.</h1>
 
 <p align="center">
-  <img src="/logo.jpg" alt="MedBro Logo" width="150">
+  <img src="/frontend/public/logo.jpg" alt="MedBro Logo" width="150">
 </p>
 
 ## О проекте
