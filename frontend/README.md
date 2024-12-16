@@ -79,13 +79,11 @@ For people who want to make changes to your project, it's helpful to have some d
 You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
 
 ## Authors and acknowledgment
-Senior Frontend Developer - [Kardashevsky Dmitry](kardashevsky.com)
-
-Junior Frontend Developer - [Pavel Romankov](Pavrom2006@gmail.com)
+Frontend Developer - [Kardashevsky Dmitry](kardashevsky.com)
 
 ## License
 
-This project is protected under a custom license. Any use, modification, or distribution of the code is prohibited without explicit permission from the author. For details, see the [LICENSE](https://gitlab.com/kardashevsky/speechpro-frontend/-/blob/main/LICENSE.md) file.
+
 
 ## Project status
 This project is currently in the MVP (Minimum Viable Product) development phase. The focus is on delivering a basic, functional version of the product to validate core features and gather initial feedback. Future updates and enhancements will depend on the results of this phase and user feedback.
