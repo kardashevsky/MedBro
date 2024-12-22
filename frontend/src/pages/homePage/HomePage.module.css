@@ -17,6 +17,38 @@
   font-weight: bold;
   margin: 0 0 10px;
   user-select: none;
+  position: relative;
+  display: inline-block;
+
+  background: linear-gradient(90deg, #2b0f52, #481878, #7a3b8f, #a644b7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.projectTitle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
+  transform: skewX(-20deg);
+  will-change: left, transform;
+  animation: shineEffect 4s ease-in-out infinite;
+}
+
+@keyframes shineEffect {
+  0% {
+    left: -150%;
+  }
+  50% {
+    left: 50%;
+  }
+  100% {
+    left: 200%;
+  }
 }
 
 .projectDescription {
