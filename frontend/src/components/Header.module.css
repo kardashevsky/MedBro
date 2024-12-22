@@ -1,13 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
 .header {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 60px;
-  color: rgb(5, 5, 5);
+  background-color: white;
+  color: rgb(0, 0, 0);
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+  will-change: transform;
 }
 
 .title {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 32px;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(90deg, #ff7eb3, #ff758c, #f54ea2, #a644b7); /* Градиент */
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  backface-visibility: hidden;
   margin: 0;
+  cursor: pointer;
+  user-select: none;
+  will-change: transform;
+  transform: translateZ(0);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  transition: color 0.2s ease, transform 0.01s ease;
 }
