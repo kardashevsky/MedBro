@@ -11,9 +11,12 @@ export default function ChatPage() {
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   const handleSendMessage = () => {
     if (!inputValue.trim()) return;
+
+    setIsSending(true);
 
     setMessages([...messages, { type: "user", message: inputValue }]);
     setInputValue("");
@@ -26,7 +29,15 @@ export default function ChatPage() {
         { type: "ai", message: "Дай-ка я проверю, как тебе помочь." },
       ]);
       setIsTyping(false);
+      setIsSending(false);
     }, 1000);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
   };
 
   return (
@@ -52,14 +63,17 @@ export default function ChatPage() {
             className={styles.input}
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
           <Button 
             size="lg" 
             color="primary"
             className={styles.sendButton}
             onPress={handleSendMessage}
+            isDisabled={isSending}
+            isLoading={isSending}
           >
-            Send
+            {isSending ? "" : "Send"}
           </Button>
         </div>
       </div>
