@@ -11,8 +11,8 @@ export default function ChatPage() {
       <div className={styles.chatContainer}>
         <div className={styles.messagesContainer}>
           <ScrollShadow hideScrollBar className={`w-[1240px] h-[820px] ${styles.scrollContainer}`}>
-            <ChatMessageAi message="Здравствуйте! Как я могу помочь Вам сегодня?" />
-            <ChatMessageUser message="У меня температура и болит голова." />
+            <ChatMessageAi message="Привет! Как я могу помочь тебе сегодня?" />
+            <ChatMessageUser message="Привет, братик! У меня температура и болит голова." />
             <TypingIndicator />
           </ScrollShadow>
         </div>
