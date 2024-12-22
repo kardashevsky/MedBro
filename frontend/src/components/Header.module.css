@@ -14,7 +14,7 @@
 .title {
   font-size: 32px;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(90deg, #ff7eb3, #ff758c, #f54ea2, #a644b7); /* Градиент */
+  background: linear-gradient(90deg, #2b0f52, #481878, #7a3b8f, #a644b7);
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
