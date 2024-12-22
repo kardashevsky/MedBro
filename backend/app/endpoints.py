@@ -1,46 +1,20 @@
 from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel
 from pipeline import rag_pipeline
 
 router = APIRouter()
 
+class QueryRequest(BaseModel):
+    query: str
+
 @router.post("/query")
-async def query_endpoint(data: dict):
-    """
-    Принимает запрос с текстом и возвращает ответ модели.
-    ---
-    parameters:
-      - name: data
-        in: body
-        description: JSON с ключом `query`, содержащим текст запроса.
-        required: true
-        schema:
-          type: object
-          properties:
-            query:
-              type: string
-              example: "What are common treatments against headache?"
-    responses:
-      200:
-        description: Ответ модели.
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                answer:
-                  type: string
-                  example: "The common treatments include..."
-                context:
-                  type: string
-                  example: "Relevant context text here..."
-      400:
-        description: Некорректный запрос.
-    """
-    query = data.get("query")
+async def query_endpoint(request: QueryRequest):
+    query = request.query
     if not query:
         raise HTTPException(status_code=400, detail="Query not provided")
     try:
-        answer = rag_pipeline(query, k=5)
-        return {"answer": answer, "context": "Relevant context text here"}
+      # response = rag_pipeline(query, k=5)
+      responseMock = {"answer": "Здесь должен быть текст от раг", "context": "Здесь должен быть контекст от раг"}
+      return responseMock
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

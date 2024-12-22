@@ -2,7 +2,7 @@ fastapi
 uvicorn
 sentence-transformers
 transformers
-faiss-gpu
+faiss-cpu
 numpy
 torch
 requests

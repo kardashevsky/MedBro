@@ -4,6 +4,7 @@ import styles from './ChatPage.module.css';
 import ChatMessageAi from "./components/chatMessageAi/ChatMessageAi";
 import ChatMessageUser from "./components/chatMessageUser/ChatMessageUser";
 import TypingIndicator from "./components/chatMessageAi/TypingIndicator";
+import { sendMessageToServer } from "../../services/api";
 
 export default function ChatPage() {
   const [messages, setMessages] = useState([
@@ -13,24 +14,32 @@ export default function ChatPage() {
   const [isTyping, setIsTyping] = useState(false);
   const [isSending, setIsSending] = useState(false);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (!inputValue.trim() || isSending) return;
-
+  
     setIsSending(true);
-
-    setMessages([...messages, { type: "user", message: inputValue }]);
+    setMessages((prevMessages) => [...prevMessages, { type: "user", message: inputValue }]);
+  
+    const userMessage = inputValue.trim();
     setInputValue("");
-
+  
     setIsTyping(true);
-
-    setTimeout(() => {
+    
+    try {
+      const serverResponse = await sendMessageToServer(userMessage);
       setMessages((prevMessages) => [
         ...prevMessages,
-        { type: "ai", message: "Дай-ка я проверю, как тебе помочь." },
+        { type: "ai", message: serverResponse },
       ]);
+    } catch (error) {
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { type: "ai", message: "Ошибка при отправке сообщения. Попробуйте снова." },
+      ]);
+    } finally {
       setIsTyping(false);
       setIsSending(false);
-    }, 1000);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

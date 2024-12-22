@@ -1,9 +1,16 @@
 # config.py
 
 # Пути к сохранённым данным
-EMBEDDINGS_PATH = "./data/embeddings.npy"
-TEXTS_PATH = "./data/texts.txt"
-FAISS_INDEX_PATH = "./data/faiss_index"
+import os
+
+# Базовая директория
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Пути к сохранённым данным
+EMBEDDINGS_PATH = os.path.join(BASE_DIR, "embeddings.npy")
+TEXTS_PATH = os.path.join(BASE_DIR, "texts.txt")
+FAISS_INDEX_PATH = os.path.join(BASE_DIR, "faiss_index")
+
 
 # Название модели для векторизации
 MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
