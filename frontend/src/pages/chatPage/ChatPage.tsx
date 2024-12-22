@@ -14,7 +14,7 @@ export default function ChatPage() {
   const [isSending, setIsSending] = useState(false);
 
   const handleSendMessage = () => {
-    if (!inputValue.trim()) return;
+    if (!inputValue.trim() || isSending) return;
 
     setIsSending(true);
 
@@ -34,9 +34,14 @@ export default function ChatPage() {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && !e.shiftKey) {
+    if (e.key === "Enter") {
+      if (e.shiftKey) {
+        return;
+      }
       e.preventDefault();
-      handleSendMessage();
+      if (!isSending) {
+        handleSendMessage();
+      }
     }
   };
 
