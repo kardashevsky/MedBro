@@ -5,3 +5,7 @@ langchain-community
 sentence-transformers
 transformers
 chromadb
+faiss-gpu
+numpy
+torch
+requests

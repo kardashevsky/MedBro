@@ -1,9 +1,3 @@
-
-!pip install transformers langchain
-!pip install faiss-gpu
-!pip install -U langchain-community
-
-## imports
 import numpy as np
 import faiss
 import numpy as np
@@ -51,7 +45,6 @@ def retrieve_texts(query_embedding, index, texts, k=5):
     distances, indices = index.search(query_embedding.reshape(1, -1), k)
     results = [(texts[idx], distances[0][i]) for i, idx in enumerate(indices[0])]
     return results
-
 
 # Настройка API
 api_key = "4Cs8hBRAzeJjgfAYR6ilpTFOtsTvCqrr"
