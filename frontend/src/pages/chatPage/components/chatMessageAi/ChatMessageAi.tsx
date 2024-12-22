@@ -13,7 +13,7 @@ export default function ChatMessageAi({ message }: ChatMessageAiProps) {
   return (
     <div className={styles.messageContainer}>
       <div className={styles.animationContainer}>
-        <Lottie animationData={animationData} loop autoplay />
+        <Lottie animationData={animationData} loop={false} autoplay />
       </div>
       <motion.div
         className={styles.card}

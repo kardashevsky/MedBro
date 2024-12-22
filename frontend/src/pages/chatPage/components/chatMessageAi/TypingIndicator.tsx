@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './TypingIndicator.module.css';
-import { Avatar } from "@nextui-org/react";
 import stylesChat from './ChatMessageAi.module.css';
+import Lottie from 'lottie-react';
+import animationData from "../../../../assets/animtaions/ai.json";
 
 
 export default function TypingIndicator() {
@@ -12,14 +13,16 @@ export default function TypingIndicator() {
 
   return (
     <div className={stylesChat.messageContainer}>
-      <Avatar src="/aiChatAvatar.jpg" className={stylesChat.avatar} />
-        <div className={stylesChat.card}>
-          <div className={`${styles.typingIndicator} ${theme === 'dark' ? styles.dark : styles.light}`}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+      <div className={styles.animationContainer}>
+        <Lottie animationData={animationData} loop autoplay />
+      </div>
+      <div className={stylesChat.card}>
+        <div className={`${styles.typingIndicator} ${theme === 'dark' ? styles.dark : styles.light}`}>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+      </div>
     </div>
   );
 }
