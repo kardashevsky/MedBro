@@ -11,6 +11,12 @@
   margin-bottom: 5px;
 }
 
+.animationContainer {
+  width: 50px; /* Задайте ширину и высоту анимации */
+  height: 50px;
+  margin-right: 16px; /* Отступ между анимацией и сообщением */
+}
+
 .card {
   flex-grow: 1;
   width: auto;

@@ -8,8 +8,8 @@ import requests
 """Загружаем эмбеддинги и тексты"""
 
 # Путь к сохранённым данным
-embeddings_path = "embeddings.npy"  # Путь к файлу с эмбеддингами
-texts_path = "texts.txt"  # Путь к файлу с текстами
+embeddings_path = "../../data/embeddings.npy"
+texts_path = "../../data/texts.txt"
 
 # Загрузка эмбеддингов
 embeddings = np.load(embeddings_path)
@@ -21,7 +21,7 @@ with open(texts_path, "r", encoding="utf-8") as f:
 print(f"Тексты загружены: {len(texts)}")
 
 # Загрузка индекса с диска
-index = faiss.read_index("faiss_index")
+index = faiss.read_index("../../data/faiss_index")
 print("Индекс загружен.")
 
 # Загрузка предобученной модели и токенизатора
