@@ -1,17 +1,23 @@
-from fastapi import FastAPI
-from fastapi.responses import JSONResponse
+# main.py
 
-app = FastAPI(
-    title="MedBro Backend",
-    description="API для демонстрации работы сервера",
-    version="1.0.0",
-    swagger_ui_parameters={"displayRequestDuration": True},
-)
+# from embeddings_manager import load_resources, texts
+import embeddings_manager
+from pipeline import rag_pipeline
 
-@app.get("/")
-async def root():
-    return JSONResponse(content={"message": "Сервер работает!"})
 
-@app.get("/status")
-async def status():
-    return JSONResponse(content={"status": "OK", "message": "Сервер в отличном состоянии!"})
+def main():
+    # 1. Инициализируем все ресурсы (модель, индекс, тексты и т.д.)
+    embeddings_manager.load_resources()
+
+    # 2. Пример вызова RAG
+    query = "What are the common treatments against headache?"
+    print(query)
+    result = rag_pipeline(query, k=5)
+
+    print(f"Ответ: {result['answer']}")
+    print("\n--- Context used ---")
+    print(result['context'])
+
+
+if __name__ == "__main__":
+    main()
