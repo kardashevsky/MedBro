@@ -1,7 +1,17 @@
 from fastapi import FastAPI
-from app.api.endpoints import router
+from fastapi.responses import JSONResponse
 
-app = FastAPI(title="MedBro Backend")
+app = FastAPI(
+    title="MedBro Backend",
+    description="API для демонстрации работы сервера",
+    version="1.0.0",
+    swagger_ui_parameters={"displayRequestDuration": True},
+)
 
-# Подключение маршрутов
-app.include_router(router)
+@app.get("/")
+async def root():
+    return JSONResponse(content={"message": "Сервер работает!"})
+
+@app.get("/status")
+async def status():
+    return JSONResponse(content={"status": "OK", "message": "Сервер в отличном состоянии!"})
