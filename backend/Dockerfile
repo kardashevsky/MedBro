@@ -15,6 +15,9 @@ WORKDIR /app
 # Копируем содержимое проекта в контейнер
 COPY . /app
 
+# Копируем папку data в контейнер
+COPY /app/data /app/data
+
 # Устанавливаем Python-зависимости
 RUN pip install --no-cache-dir -r requirements.txt
 
