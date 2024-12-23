@@ -26,16 +26,16 @@ def load_resources():
 
     # 1) Загрузить эмбеддинги
     embeddings = np.load(EMBEDDINGS_PATH)
-    print(f"Эмбеддинги загружены: {embeddings.shape}")
+    print(f"Embeddings loaded: {embeddings.shape}")
 
     # 2) Загрузить тексты
     with open(TEXTS_PATH, "r", encoding="utf-8") as f:
         texts = [line.strip() for line in f]
-    print(f"Тексты загружены: {len(texts)}")
+    print(f"Texts loaded: {len(texts)}")
 
     # 3) Загрузить FAISS-индекс
     index = faiss.read_index(FAISS_INDEX_PATH)
-    print("Индекс загружен.")
+    print("FAISS index loaded.")
 
     # 4) Инициализировать модель AutoModel для получения эмбеддингов
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
