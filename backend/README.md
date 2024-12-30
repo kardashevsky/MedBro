@@ -10,3 +10,6 @@ docker build -t medbro-backend .
 ```
 docker run -d -p 8000:8000 medbro-backend
 ```
+
+### Как протестировать работу помощника онлайн:
+## Вы можете пообщаться с нашим чатботом перейдя по следующей ссылке: http://medbro.tech/
