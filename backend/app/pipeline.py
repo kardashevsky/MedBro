@@ -11,6 +11,9 @@ def rag_pipeline(query: str, k=5) -> dict:
     2) Ищем релевантные тексты
     3) Формируем prompt и отправляем в LLM
     """
+
+    print(f"Эмбеддинги загружены: {em.embeddings.shape}")
+
     # 1. Векторизуем запрос
     query_embedding = em.get_embedding(query)
 

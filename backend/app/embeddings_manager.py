@@ -22,7 +22,6 @@ def load_resources():
     """
     Загружает тексты, эмбеддинги, индекс и инициализирует модель (один раз при старте приложения).
     """
-    global embeddings, texts, index, tokenizer, model
 
     # 1) Загрузить эмбеддинги
     embeddings = np.load(EMBEDDINGS_PATH)
@@ -42,7 +41,9 @@ def load_resources():
     model = AutoModel.from_pretrained(MODEL_NAME)
     model.to(device)
     print(f"Модель {MODEL_NAME} загружена и размещена на устройстве: {device}")
+    return embeddings, texts, index, tokenizer, model
 
+embeddings, texts, index, tokenizer, model = load_resources()
 
 def get_embedding(text: str):
     """

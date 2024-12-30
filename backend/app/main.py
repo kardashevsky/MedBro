@@ -23,7 +23,7 @@ app.add_middleware(
 app.include_router(router, prefix="/api")
 
 def main():
-    embeddings_manager.load_resources()
+    # embeddings_manager.load_resources() # убрать
     uvicorn.run("main:app", host="localhost", port=8000, reload=True)
 
 if __name__ == "__main__":
