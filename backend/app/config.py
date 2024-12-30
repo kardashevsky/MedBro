@@ -26,4 +26,4 @@ HEADERS = {
 # Параметры генерации
 TEMPERATURE = 0.7
 TOP_P = 0.95
-MAX_TOKENS = 1000
+MAX_TOKENS = 10000

@@ -16,6 +16,7 @@ async def query_endpoint(request: QueryRequest):
         query_eng = translate_query_with_mistral(query, 'Russian', 'English')
         response = rag_pipeline(query_eng, k=5)
         answer = translate_query_with_mistral(response['answer'], 'English', 'Russian')
-        return answer
+        kek = {"answer": answer, "context": response['context']}
+        return kek
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
