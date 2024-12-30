@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from pipeline import rag_pipeline
+from llm_api import translate_query_with_mistral
 
 router = APIRouter()
 
