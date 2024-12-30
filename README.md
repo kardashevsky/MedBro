@@ -54,6 +54,12 @@ npm install
 cd backend
 pip install -r requirements.txt
 ```
+#### Скачайте дынные для рабоыт RAG по ссылке:
+```
+https://drive.google.com/file/d/1dU8f8UOJl9ZuskoUuqlUe7HwP6c9Bxwx/view?usp=sharing
+```
+#### Расположите все три файла в директории MedBro/backend/app
+
 
 ### 2. Запуск приложения
 Запустите приложение в режиме разработки.
@@ -66,6 +72,9 @@ npm run dev
 #### Запуск бэкенда
 ```bash
 cd backend
-python app.py
+python main.py
 
 ```
+
+# Как протестировать работу помощника онлайн:
+Вы можете пообщаться с нашим чатботом, перейдя по следующей ссылке: http://medbro.tech/. Но там пока не настроен контейнер для бэкэнда... Попробуем успеть к 13 января, чтобы вы могли прямо в интернете это сделать.
