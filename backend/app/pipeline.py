@@ -12,8 +12,6 @@ def rag_pipeline(query: str, k=5) -> dict:
     3) Формируем prompt и отправляем в LLM
     """
 
-    # print(f"Эмбеддинги загружены: {em.embeddings.shape}")
-
     # 1. Векторизуем запрос
     query_embedding = em.get_embedding(query)
 
@@ -28,10 +26,3 @@ def rag_pipeline(query: str, k=5) -> dict:
     answer = generate_answer_with_mistral(prompt)
 
     return {"answer": answer, "context": context}
-
-
-def translate_query_with_mistral(query, lang1, lang2):
-    # Метод-переводчик запросов и ответов с русского на английский и наоборот
-    prompt = f"Translate the following query from {lang1} into {lang2}. Write down only translation with no other details.\n\nQuery:\n\n {query}"
-    answer = generate_answer_with_mistral(prompt)
-    return answer
