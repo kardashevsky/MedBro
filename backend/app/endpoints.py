@@ -13,8 +13,9 @@ async def query_endpoint(request: QueryRequest):
     if not query:
         raise HTTPException(status_code=400, detail="Query not provided")
     try:
-        response = rag_pipeline(query, k=5)
-    #   responseMock = {"answer": "Здесь должен быть текст от раг", "context": "Здесь должен быть контекст от раг"}
-        return response
+        query_eng = translate_query_with_mistral(query, 'Russian', 'English')
+        response = rag_pipeline(query_eng, k=5)
+        answer = translate_query_with_mistral(response['answer'], 'English', 'Russian')
+        return answer
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
