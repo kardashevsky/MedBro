@@ -26,10 +26,16 @@
   pointer-events: none;
 }
 
-.card .nextui-textarea-wrapper {
-  background-color: transparent;
-}
-
-.card .nextui-textarea {
-  color: white;
+.formattedMessage {
+  font-size: 16px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  padding: 14px;
+  border-radius: 14px;
+  background-color: #F4F4F5;
+  overflow: auto;
+  line-height: 1.5;
+  display: inline-block;
+  max-width: 600px;
+  width: fit-content;
 }

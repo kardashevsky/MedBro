@@ -1,5 +1,3 @@
-/* src/pages/chatPage/components/ChatMessageAi/ChatMessageAi.tsx */
-import { Textarea } from "@nextui-org/react";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import styles from './ChatMessageAi.module.css';
@@ -8,6 +6,11 @@ import animationData from "../../../../assets/animtaions/ai.json";
 interface ChatMessageAiProps {
   message: string;
 }
+
+const parseMessage = (text: string) => {
+  const regex = /\*\*(.*?)\*\*/g;
+  return text.replace(regex, "<b>$1</b>");
+};
 
 export default function ChatMessageAi({ message }: ChatMessageAiProps) {
   return (
@@ -25,12 +28,9 @@ export default function ChatMessageAi({ message }: ChatMessageAiProps) {
           ease: "easeOut",
         }}
       >
-        <Textarea
-          size="lg"
-          minRows={1}
-          isReadOnly
-          value={message}
-          maxRows={1000}
+        <div
+          className={styles.formattedMessage}
+          dangerouslySetInnerHTML={{ __html: parseMessage(message) }}
         />
       </motion.div>
     </div>

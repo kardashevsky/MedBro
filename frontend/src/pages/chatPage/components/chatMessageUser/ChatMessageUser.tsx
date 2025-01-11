@@ -1,5 +1,4 @@
-/* src/pages/chatPage/components/ChatMessageUser/ChatMessageUser.tsx */
-import { Avatar, Textarea } from "@nextui-org/react";
+import { Avatar } from "@nextui-org/react";
 import styles from './ChatMessageUser.module.css';
 import { UserIcon } from "../../../../assets/icons/UserIcon";
 import { motion } from "framer-motion";
@@ -20,14 +19,8 @@ export default function ChatMessageUser({ message }: ChatMessageUserProps) {
           duration: 0.3,
           ease: "easeOut",
         }}
-      >        
-        <Textarea
-          size="lg"
-          minRows={1}
-          isReadOnly
-          value={message}
-          maxRows={1000}
-        />
+      >
+        <div className={styles.formattedMessage}>{message}</div>
       </motion.div>
       <Avatar icon={<UserIcon />} className={styles.avatar} />
     </div>
