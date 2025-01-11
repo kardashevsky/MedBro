@@ -52,3 +52,14 @@
   max-width: 1240px;
   max-height: 820px;
 }
+
+@media (max-width: 430px) {
+  .pageContainer {
+    height: 100%;
+  }
+
+  .chatContainer {
+    margin-top: 20px;
+    height: 100%;
+  }
+}
