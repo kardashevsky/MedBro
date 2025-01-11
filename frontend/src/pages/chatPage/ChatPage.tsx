@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button, ScrollShadow, Textarea } from "@nextui-org/react";
 import styles from './ChatPage.module.css';
 import ChatMessageAi from "./components/chatMessageAi/ChatMessageAi";
@@ -14,17 +14,32 @@ export default function ChatPage() {
   const [isTyping, setIsTyping] = useState(false);
   const [isSending, setIsSending] = useState(false);
 
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isTyping]);
+
   const handleSendMessage = async () => {
     if (!inputValue.trim() || isSending) return;
-  
+
     setIsSending(true);
-    setMessages((prevMessages) => [...prevMessages, { type: "user", message: inputValue }]);
-  
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { type: "user", message: inputValue },
+    ]);
+
     const userMessage = inputValue.trim();
     setInputValue("");
-  
+
     setIsTyping(true);
-    
+
     try {
       const serverResponse = await sendMessageToServer(userMessage);
       setMessages((prevMessages) => [
@@ -34,7 +49,10 @@ export default function ChatPage() {
     } catch (error) {
       setMessages((prevMessages) => [
         ...prevMessages,
-        { type: "ai", message: "Ошибка при отправке сообщения. Попробуйте снова." },
+        {
+          type: "ai",
+          message: "Ошибка при отправке сообщения. Попробуйте снова.",
+        },
       ]);
     } finally {
       setIsTyping(false);
@@ -58,7 +76,7 @@ export default function ChatPage() {
     <div className={styles.pageContainer}>
       <div className={styles.chatContainer}>
         <div className={styles.messagesContainer}>
-          <ScrollShadow hideScrollBar className={`w-[1240px] h-[820px] ${styles.scrollContainer}`}>
+          <ScrollShadow hideScrollBar className={`${styles.scrollContainer}`}>
             {messages.map((msg, index) =>
               msg.type === "ai" ? (
                 <ChatMessageAi key={index} message={msg.message} />
@@ -67,6 +85,7 @@ export default function ChatPage() {
               )
             )}
             {isTyping && <TypingIndicator />}
+            <div ref={messagesEndRef} />
           </ScrollShadow>
         </div>
         <div className={styles.inputContainer}>
@@ -79,8 +98,8 @@ export default function ChatPage() {
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
           />
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             color="primary"
             className={styles.sendButton}
             onPress={handleSendMessage}
