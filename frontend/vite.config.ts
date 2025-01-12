@@ -1,10 +1,21 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  server:{
+  plugins: [
+    react(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'public/telegramWebApp.js',
+          dest: ''
+        },
+      ],
+    }),
+  ],
+  server: {
     watch: {
       usePolling: true,
     },
@@ -21,8 +32,8 @@ export default defineConfig({
       },
       compress: {
         drop_console: true,
-        drop_debugger: true
-      }
+        drop_debugger: true,
+      },
     },
   },
 });
