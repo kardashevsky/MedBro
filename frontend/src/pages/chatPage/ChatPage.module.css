@@ -62,4 +62,8 @@
     margin-top: 20px;
     height: 100%;
   }
+
+  .sendButton {
+    width: 100px;
+  }
 }
